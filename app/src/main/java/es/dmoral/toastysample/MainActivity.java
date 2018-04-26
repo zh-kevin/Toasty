@@ -1,7 +1,5 @@
 package es.dmoral.toastysample;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +17,7 @@ import static android.graphics.Typeface.BOLD_ITALIC;
  * This file is part of Toasty.
  *
  * Toasty is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
+ * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
@@ -33,11 +31,11 @@ import static android.graphics.Typeface.BOLD_ITALIC;
  */
 
 public class MainActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         findViewById(R.id.button_error_toast).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,18 +77,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toasty.info(MainActivity.this, getFormattedMessage()).show();
-            }
-        });
-        findViewById(R.id.button_custom_config).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toasty.Config.getInstance()
-                        .setTextColor(Color.GREEN)
-                        .setToastTypeface(Typeface.createFromAsset(getAssets(), "PCap Terminal.otf"))
-                        .apply();
-                Toasty.custom(MainActivity.this, "sudo kill -9 everyone", getResources().getDrawable(R.drawable.laptop512),
-                        Color.BLACK, Toast.LENGTH_SHORT, true, true).show();
-                Toasty.Config.reset(); // Use this if you want to use the configuration above only once
             }
         });
     }
